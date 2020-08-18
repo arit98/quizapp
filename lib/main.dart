@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: MySplash(),
-      home: ButtonNav(),
+      home: MySplash(),
+      // home: ButtonNav(),
     );
   }
 }
