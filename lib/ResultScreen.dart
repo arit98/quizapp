@@ -1,110 +1,118 @@
 import 'package:flutter/material.dart';
-import 'package:qa/quizscreen.dart';
+import 'package:quizapp/mscreen.dart';
 
 class ResultScreen extends StatelessWidget {
-
   final int score;
 
   ResultScreen({this.score});
 
   @override
   Widget build(BuildContext context) {
-     // page
-    return Scaffold(
-      backgroundColor: Color(0xFF2D046E),
-      body: Container(
+    var mda = MediaQuery.of(context);
+    return Expanded(
+      child: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            // it can accept multiple widgets
-            children: <Widget>[
-
-              SizedBox(
-                height: 90,
-              ),
-
-              Center(
-                child: Image(
-                  image: AssetImage("assets/icon-circle.png"),
-                  width: 300,
-                  height: 300,
+          child: Container(
+            width: mda.size.width,
+            height: mda.size.height,
+            decoration: BoxDecoration(
+                color: Colors.amberAccent,
+                borderRadius: BorderRadius.circular(5)),
+            margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 150),
+                Image(
+                  image: AssetImage('images/logo.png'),
+                  width: 150,
+                  height: 150,
                 ),
-              ),
-
-              Text(
-                "Result",
-                style: TextStyle(
-                  color: Color(0xFFA20CBE),
-                  fontSize: 35,
-                ),
-              ),
-
-              Text(
-                "$score/10",
-                style: TextStyle(
-                  color: Color(0xFFFFBA00),
-                  fontSize: 60,
-                ),
-              ),
-
-              Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 40, 
-                ),
-                child: RaisedButton(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10, 
-                    horizontal: 20
+                SizedBox(height: 20),
+                Text(
+                  'Result',
+                  style: TextStyle(
+                    color: Color(0xFF242A40),
+                    fontSize: 40,
                   ),
-                  child: Text(
-                    "RESTART",
-                    style: TextStyle(
-                      fontSize: 32,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  '$score/10',
+                  style: TextStyle(
+                    color: Color(0xFF242A40),
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
+                ),
+                Container(
+                  height: 70,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 30,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF242A40),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
                     ),
-                  ),
-                  color: Color(0xFFFFBA00),
-                  textColor: Colors.white,
-                  onPressed: () {
-                    // goto quiz screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => QuizScreen(),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Text(
+                      'RESTART',
+                      style: TextStyle(
+                        fontSize: 20,
                       ),
-                    );
-                    
-                  },
-                ),
-              ),
-
-              Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 30,
-                ),
-                child: RaisedButton(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 10, 
-                    horizontal: 20
+                    ),
+                    color: Color(0xFF242A40),
+                    textColor: Colors.amberAccent,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainScreen(),
+                        ),
+                      );
+                    },
                   ),
-                  child: Text(
-                    "EXIT",
-                    style: TextStyle(
-                      fontSize: 32,
+                ),
+                Container(
+                  height: 85,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 10,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 18.0),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      child: Text(
+                        'EXIT',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      color: Color(0xFF242A40),
+                      textColor: Colors.amberAccent,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
                   ),
-                  color: Color(0xFF511AA8),
-                  textColor: Colors.white,
-                  onPressed: () {
-                    // exit
-                    Navigator.pop(context);
-                    
-                  },
                 ),
-              ),
-
-            ],
+              ],
+            ),
           ),
         ),
       ),
