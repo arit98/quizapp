@@ -100,11 +100,12 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     if (qz != null) {
-      return Scaffold(
-        backgroundColor: Color(0xFF242A40),
-        body: Expanded(
-          child: SingleChildScrollView(
-            child: SafeArea(
+      return Expanded(
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            backgroundColor: Color(0xFF242A40),
+            body: SingleChildScrollView(
               child: Container(
                 margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
                 child: Column(
